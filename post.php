@@ -114,7 +114,7 @@ session_start();
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="post.php" class="nav-item nav-link">Contact</a>
+                            <a href="post.php" class="nav-item nav-link">Post</a>
                         </div>
                         
                     </div>

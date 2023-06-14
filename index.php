@@ -111,7 +111,7 @@ session_start();
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="post.php" class="nav-item nav-link">Contact</a>
+                            <a href="post.php" class="nav-item nav-link">Post</a>
                         </div>
                         
                     </div>
@@ -172,7 +172,16 @@ session_start();
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Identity Cards</h6>
-                            <small class="text-body"><?php echo rand(1, 100) ?></small>
+                            <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Identity Cards'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -185,7 +194,16 @@ session_start();
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Digital Items</h6>
-                            <small class="text-body"><?php echo rand(1, 20) ?></small>
+                            <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Digital Item'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -198,7 +216,16 @@ session_start();
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Wallets</h6>
-                            <small class="text-body"><?php echo rand(1, 20) ?></small>
+                            <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Wallets'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -211,7 +238,16 @@ session_start();
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Books</h6>
-                            <small class="text-body"><?php echo rand(1, 20) ?></small>
+                             <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Books'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
