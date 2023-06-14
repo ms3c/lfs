@@ -409,7 +409,16 @@ session_start();
                     <?php
 
         include 'helpers/dbcon.inc.php';
-        $query = "SELECT * FROM items ORDER BY item_id DESC";
+
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $itemsPerPage = 8;
+
+        // Calculate the offset
+        $offset = ($page - 1) * $itemsPerPage;
+
+        // Construct the SQL query with pagination
+        $query = "SELECT * FROM items LIMIT $itemsPerPage OFFSET $offset";
+        //$query = "SELECT * FROM items ORDER BY item_id DESC";
         $res = $conn->query($query);
        
 
@@ -453,11 +462,11 @@ session_start();
                     <div class="col-12">
                         <nav>
                           <ul class="pagination justify-content-center">
-                            <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
+                            <li class="page-item"><a class="page-link" href="index.php?page=1">Previous</span></a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="index.php?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="index.php?page=3">3</a></li>
+                            <li class="page-item"><a class="page-link" href="index.php?page=2">Next</a></li>
                           </ul>
                         </nav>
                     </div>
