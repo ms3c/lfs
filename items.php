@@ -168,11 +168,20 @@ session_start();
                 <a class="text-decoration-none" href="">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <a href="items.php?sortedby=identity"><img class="img-fluid" src="img/id-3.jpg" alt=""></a>
+                            <a href="items.php?sortedby=Identity Cards"><img class="img-fluid" src="img/id-3.jpg" alt=""></a>
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Identity Cards</h6>
-                            <small class="text-body"><?php echo rand(1, 100) ?></small>
+                            <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Identity Cards'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -181,11 +190,20 @@ session_start();
                 <a class="text-decoration-none" href="">
                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <a href="items.php?sortedby=digital"><img class="img-fluid" src="img/cat-4.jpg" alt=""></a>
+                        <a href="items.php?sortedby=Digital Item"><img class="img-fluid" src="img/cat-4.jpg" alt=""></a>
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Digital Items</h6>
-                            <small class="text-body"><?php echo rand(1, 20) ?></small>
+                            <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Digital Item'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -194,11 +212,20 @@ session_start();
                 <a class="text-decoration-none" href="">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <a href="items.php?sortedby=wallets"><img class="img-fluid" src="img/cat-1.jpg" alt=""></a>
+                        <a href="items.php?sortedby=Wallets"><img class="img-fluid" src="img/cat-1.jpg" alt=""></a>
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Wallets</h6>
-                            <small class="text-body"><?php echo rand(1, 20) ?></small>
+                            <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Wallets'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -207,11 +234,20 @@ session_start();
                 <a class="text-decoration-none" href="">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                        <a href="items.php?sortedby=books"><img class="img-fluid" src="img/cat-3.jpg" alt=""></a>
+                        <a href="items.php?sortedby=Books"><img class="img-fluid" src="img/cat-3.jpg" alt=""></a>
                         </div>
                         <div class="flex-fill pl-3">
                             <h6>Books</h6>
-                            <small class="text-body"><?php echo rand(1, 20) ?></small>
+                             <?php
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Books'";
+                            $result = $conn->query($sql);
+
+                            if($result)
+                                $row = $result->fetch_assoc();
+                                $count = $row['count'];
+                                echo '<small class="text-body">'.$count.'</small>';
+                            ?>
                         </div>
                     </div>
                 </a>
@@ -357,7 +393,38 @@ session_start();
                     <?php
 
         include 'helpers/dbcon.inc.php';
-        $query = "SELECT * FROM items ORDER BY item_id DESC";
+        
+
+        if(isset($_GET['sortedby'])){
+
+
+            if($_GET['sortedby'] == 'Identity Cards'){
+
+                $sort = $_GET['sortedby'];
+                $query = "SELECT * FROM items WHERE category = '$sort'";
+
+            }else if($_GET['sortedby'] == 'Digital Item'){
+
+                $sort = $_GET['sortedby'];
+                $query = "SELECT * FROM items WHERE category = '$sort'";
+
+            }else if($_GET['sortedby'] == 'Wallets'){
+
+                $sort = $_GET['sortedby'];
+                $query = "SELECT * FROM items WHERE category = '$sort'";
+
+            }else if($_GET['sortedby'] == 'Books'){
+
+                $sort = $_GET['sortedby'];
+                $query = "SELECT * FROM items WHERE category = '$sort'";
+            }
+
+            
+
+            
+
+        }
+        
         $res = $conn->query($query);
 
         while($row = mysqli_fetch_assoc($res)){
