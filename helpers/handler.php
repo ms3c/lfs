@@ -2,9 +2,11 @@
 session_start();
 
 $item_poster = "";
+$userid = 0;
 if(isset($_SESSION['username'])){
 
   $item_poster = $_SESSION['first_name'] .' '. $_SESSION['lastname'];
+  $userid = $_SESSION['id'];
   
 }else{
 Header("Location: ../login.php?warning=pleaseloginbeforepostingitem");
@@ -73,8 +75,8 @@ $photoname = 'helpers/'.$target_file;
 include "dbcon.inc.php";
 
 
-$sql = "INSERT INTO `items` (`item_name`, `category`, `description`, `location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `type`, `claimed_by`, `claimed_date`, `image`)
-VALUES ('$item_name', '$cotegory', '$description', '$place', '$place', NULL, '$date', '$item_poster', NULL, NULL,'$type', NULL, NULL, '$photoname');";
+$sql = "INSERT INTO `items` (`item_name`, `category`, `description`, `postedby`,`location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `type`, `claimed_by`, `claimed_date`, `image`)
+VALUES ('$item_name', '$cotegory', '$description', '$userid', '$place', '$place', '$date', '$date', '$item_poster', NULL, NULL,'$type', NULL, NULL, '$photoname');";
 
 
 //echo $sql;

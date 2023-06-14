@@ -190,11 +190,66 @@
 
                     }
                     echo '<p class="mb-4">'.$descr.'</p>';
+
+                    $sql = "SELECT items.*, users.*
+                    FROM items
+                    INNER JOIN users ON items.postedby = users.id
+                    WHERE items.item_id = $id";
+
+                    $result = $conn->query($sql);
+
+                        $row = $result->fetch_assoc();
+                        $postedby = $row['first_name'] .' '. $row['lastname'];
+                        $date = $row['date_found'];
+                        $place =  $row['location_found'];
+                        $phone = $row['phone'];
+                        $type = $row['type'];
+                    
+
+                        
+
+
+                    echo '<p class="mb-2">Posted By: '.$postedby.'</p>';
+                    echo '<p class="mb-2">Date: '.$date.'</p>';
+                    echo '<p class="mb-2">Location: '.$place.'</p>';
+                    echo '<p class="mb-2">Phone: '.$phone.'</p>';
+
+                    echo '<div class="d-flex align-items-center mb-4 pt-2">';
+                    
+                    if($type == 'Found'){
+
+                        echo '<button class="btn btn-primary px-3"><i class="fa fa-hand-paper mr-1"></i>Claim This Item</button>';
+
+                    }else if($type == 'Lost'){
+
+                        echo '<button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found This Item</button>';
+                        
+                    }
+                    
+                    
+                    
+                    
+                    echo '</div>';
+
+                    echo '<div class="d-flex align-items-center mb-4 pt-2">';
+                    if($type == 'Found'){
+
+                        echo '<a href="tel:+1234567890" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the Person who found this item</a>';
+
+
+
+                    }else if($type == 'Lost'){
+
+                        echo '<a href="tel:+1234567890" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
+
+
+                    }
+                    echo '</div>';
+
+                    
                     ?>
-                    <div class="d-flex align-items-center mb-4 pt-2">
-                      
-                        <button class="btn btn-primary px-3"><i class="fa fa-hand-paper mr-1"></i>Clain This Item</button>
-                    </div>
+                    
+               
                     
                 </div>
             </div>
@@ -207,7 +262,7 @@
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
-                            <h4 class="mb-3">Product Description</h4>
+                            <h4 class="mb-3">Item Description</h4>
                             <?php
 
                                 $id = $_GET['id'];
