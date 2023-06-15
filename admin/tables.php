@@ -51,7 +51,7 @@
                 </div>
                 <ul class="list-reset flex flex-col">
                     <li class=" w-full h-full py-3 px-2 border-b border-light-border ">
-                        <a href="index.html"
+                        <a href="index.php"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-tachometer-alt float-left mx-2"></i>
                             Dashboard
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
-                        <a href="tables.html"
+                        <a href="tables.php"
                             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-table float-left mx-2"></i>
                             Tables
@@ -137,79 +137,7 @@
 
                 <div class="flex flex-col">
                     <!-- Card Sextion Starts Here -->
-                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
-                        <!--Horizontal form-->
-                        <div class="mb-2 border-solid border-grey-light rounded border shadow-sm w-full md:w-1/2 lg:w-1/2">
-                            <div class="bg-gray-300 px-2 py-3 border-solid border-gray-400 border-b">
-                                Bordered Table
-                            </div>
-                            <div class="p-3">
-                                <table class="table-fixed">
-                                    <thead>
-                                      <tr>
-                                        <th class="border w-1/2 px-4 py-2">Title</th>
-                                        <th class="border w-1/4 px-4 py-2">Author</th>
-                                        <th class="border w-1/4 px-4 py-2">Views</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td class="border px-4 py-2">Intro to CSS</td>
-                                        <td class="border px-4 py-2">Adam</td>
-                                        <td class="border px-4 py-2">858</td>
-                                      </tr>
-                                      <tr class="bg-gray-100">
-                                        <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
-                                        <td class="border px-4 py-2">Adam</td>
-                                        <td class="border px-4 py-2">112</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="border px-4 py-2">Into to JavaScript</td>
-                                        <td class="border px-4 py-2">Chris</td>
-                                        <td class="border px-4 py-2">1,280</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!--/Horizontal form-->
-
-                        <!--Underline form-->
-                        <div class="mb-2 md:mx-2 lg:mx-2 border-solid border-gray-200 rounded border shadow-sm w-full md:w-1/2 lg:w-1/2">
-                            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
-                                Colored Table
-                            </div>
-                            <div class="p-3">
-                                <table class="table-fixed">
-                                    <thead>
-                                      <tr>
-                                        <th class="border-b bg-black text-white w-1/2 px-4 py-2">Title</th>
-                                        <th class="border-b bg-black text-white w-1/4 px-4 py-2">Author</th>
-                                        <th class="border-b bg-black text-white w-1/4 px-4 py-2">Views</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td class="border-b bg-blue-400 text-white px-4 py-2">Intro to CSS</td>
-                                        <td class="border-b bg-blue-400 text-white px-4 py-2">Adam</td>
-                                        <td class="border-b bg-blue-400 text-white px-4 py-2">858</td>
-                                      </tr>
-                                      <tr class="bg-gray-100">
-                                        <td class="border-b bg-green-400 text-white px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
-                                        <td class="border-b bg-green-400 text-white px-4 py-2">Adam</td>
-                                        <td class="border-b bg-green-400 text-white px-4 py-2">112</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="border-b bg-red-500 text-white px-4 py-2">Into to JavaScript</td>
-                                        <td class="border-b bg-red-500 text-white px-4 py-2">Chris</td>
-                                        <td class="border-b bg-red-500 text-white px-4 py-2">1,280</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!--/Underline form-->
-                    </div>
+                    
                     <!-- /Cards Section Ends Here -->
 
                     <!--Grid Form-->
