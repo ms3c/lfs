@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./dist/styles.css">
     <link rel="stylesheet" href="./dist/all.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
-    <title>All Items</title>
+    <title>All Users</title>
 </head>
 
 <body>
@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     
-                    <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="items.php"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-table float-left mx-2"></i>
@@ -77,7 +77,7 @@
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
-                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                         <a href="users.php"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-table float-left mx-2"></i>
@@ -112,11 +112,10 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Item</th>
-                                            <th>Posted By</th>
-                                            <th>Place</th>
-                                            <th>Date</th>
-                                            <th>Type</th>
+                                            <th>Names</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Change password</th>
                                             <th>Action</th>
 
                                         </tr>
@@ -125,31 +124,31 @@
                                     <?php
 
                                             include '../helpers/dbcon.inc.php';
-                                            $sql = "SELECT items.*, users.*
-                                            FROM items
-                                            INNER JOIN users ON items.postedby = users.id ORDER BY items.item_id DESC";
+                                            $sql = "SELECT * FROM users";
+
 
                                             $res = $conn->query($sql);
 
                                             while($row = mysqli_fetch_assoc($res)){
-                                                $id = $row['item_id'];
-                                                $item =  $row['item_name'];
-                                                $postedby = $row['first_name'] . ' ' . $row['lastname'];
+                                                $id = $row['id'];
+                                                $email =  $row['email'];
+                                                $names = $row['first_name'] . ' ' . $row['first_name'] .' '. $row['lastname'];
 
-                                                $place = $row['location_found'];
+                                                $phone = $row['phone'];
     
-                                                $date = $row['date_found'];
-    
-                                                $type = $row['type'];
+                                            
 
                                                 echo "<tr>
                                                 
                                                 <td>$id</td>
-                                                <td>$item</td>
-                                                <td>$postedby</td>
-                                                <td>$place</td>
-                                                <td>$date</td>
-                                                <td>$type</td>
+                                                <td>$names</td>
+                                                <td>$phone</td>
+                                                <td>$email</td>
+                                                <td>
+                                                <div class='button-container'>
+                                                <a href='#' style='color:green'><button>Edit</button></a>
+                                                </div>
+                                                </td>
                                                 <td>
                                                 <div class='button-container'>
                                                 <a href='#'><button>Edit</button></a>
