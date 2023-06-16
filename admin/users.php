@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+if(!isset($_SESSION['role'])){
+    header("Location: ../login.php?error=pleaselogin");
+    exit();
+}
+if($_SESSION['role'] != '1'){
+    header("Location: ../login.php?error=notadmin");
+    exit();
+}
+?>
 <html lang="en">
 
 <head>
@@ -152,7 +163,7 @@
                                                 <td>
                                                 <div class='button-container'>
                                                 <a href='#'><button>Edit</button></a>
-                                                <a href='#' style='color:red'><button>Delete</button></a>
+                                                <a href='deleteuser.php?id=$id' style='color:red'><button>Delete</button></a>
                                                 </div>
                                                 </td>
                                                 

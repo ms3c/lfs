@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+if(!isset($_SESSION['role'])){
+    header("Location: ../login.php");
+    exit();
+}
+if($_SESSION['role'] != '1'){
+    header("Location: ../login.php?error=notadmin");
+    exit();
+}
+?>
 <html lang="en">
 
 <head>
@@ -29,7 +40,13 @@
 
 
                     <img onclick="profileToggle()" class="inline-block h-8 w-8 rounded-full" src="dist/images/download.php@1x_1.jpg" alt="">
-                    <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">System Admin</a>
+                    <?php
+                    
+                    if(isset($_SESSION['role']) && $_SESSION['role'] == '1'){
+                        $names = $_SESSION['first_name'].' '.$_SESSION['lastname'];
+                        echo '<a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block">'.$names.'</a>';
+                    }
+                    ?>
                     <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
                         <ul class="list-reset">
                           <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>

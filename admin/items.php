@@ -1,6 +1,16 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+if(!isset($_SESSION['role'])){
+    header("Location: ../login.php");
+    exit();
+}
+if($_SESSION['role'] != '1'){
+    header("Location: ../login.php?error=notadmin");
+    exit();
+}
+?>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,7 +163,7 @@
                                                 <td>
                                                 <div class='button-container'>
                                                 <a href='#'><button>Edit</button></a>
-                                                <a href='#' style='color:red'><button>Delete</button></a>
+                                                <a href='deleteitem.php?id=$id' style='color:red'><button>Delete</button></a>
                                                 </div>
                                                 </td>
                                                 

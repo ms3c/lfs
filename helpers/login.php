@@ -19,10 +19,14 @@ if ($result->num_rows === 1) {
     if (md5($password) === $row['password']) {
         // Successful login, redirect to a dashboard page
         $_SESSION['username'] = $username;
+        $_SESSION['role'] = $row['role'];
         $_SESSION['id'] = $row['id'];
         $_SESSION['first_name'] = $row['first_name'];
         $_SESSION['middle_name'] = $row['middle_name'];
         $_SESSION['lastname'] = $row['lastname'];
+        if($row['role'] == '1'){
+            header("Location: ../admin/index.php");
+            exit();
         header("Location: ../index.php");
         exit();
     }
