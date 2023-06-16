@@ -135,24 +135,19 @@
                         
                         ?>
                     </div>
-                    <form action="helpers/login.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
+                    <form action="helpers/reset.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
-                            <input type="text" name="username" class="form-control" id="username" placeholder="User"
+
+                            <input type="text" name="account" class="form-control" id="username" placeholder="Email or Username"
                                 required="required" data-validation-required-message="Please enter your user name" />
                             <p class="help-block text-danger"></p>
                         </div>
-                        <div class="control-group">
-                            <input type="password" name="password" class="form-control" id="email" placeholder="Please enter your password"
-                                required="required" data-validation-required-message="Please enter the palce you lost this item" />
-                            <p class="help-block text-danger"></p>
-                        </div>
+                
                                                 
                         <div class="d-flex justify-content-between">
                         <div class="col-md-6 form-group text-center" style="margin: auto;">
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Login</button>
-                            <a href="resetpassword.php" class="btn btn-link" name="forgotPasswordButton">Forgot Password</a>
-                            <a href="register.php" class="btn btn-primary" name="registerButton">Register</a>
+                            <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Send Confirmation Code</button>
                         </div>
                     </div>
 
