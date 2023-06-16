@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <?php 
 session_start();
+if(!isset($_SESSION['role'])){
+    header("Location: ../login.php");
+    if($_SESSION['role'] != '1'){
+        header("Location: ../login.php?e");
+    }
+}
+
 ?>
 <html lang="en">
 
