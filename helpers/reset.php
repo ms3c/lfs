@@ -2,6 +2,7 @@
 session_start();
 
 include "dbcon.inc.php";
+include "../sms.php";
 
 
 $account = $_POST['account'];
@@ -16,6 +17,7 @@ if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
     
     $code = rand(100000, 999999);
+    //SMSHelper($code);
     $expiration = time() + (60 * 60);
     $_SESSION['code'] = $code;
     $token = sha1(date("YmdHis") . (string) $code);
@@ -31,7 +33,7 @@ if ($result->num_rows === 1) {
 
 
 }else{
-    header("Location: ../verify.php?error=accountnotfound");
+    header("Location: ../resetpassword.php?error=accountnotfound");
     exit();
 }
 

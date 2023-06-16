@@ -1,6 +1,6 @@
 {
     "require": {
-	"infobip/infobip-api-php-client": "5.0.0",
-        "infobip-community/infobip-api-php-sdk": "^1.1"
+        "phpmailer/phpmailer": "^6.8",
+        "vlucas/phpdotenv": "^5.5"
 }
 }

@@ -156,7 +156,7 @@ $_SESSION['resettoken'] = $_GET['token'];
 
                         <div class="control-group">
 
-                        <input type="text" name="pwd2" class="form-control" id="username" placeholder="Verify new password"
+                        <input type="text" name="pwd1" class="form-control" id="username" placeholder="Verify new password"
                             required="required" data-validation-required-message="Please enter your user name" />
                         <p class="help-block text-danger"></p>
                         </div>
@@ -165,7 +165,7 @@ $_SESSION['resettoken'] = $_GET['token'];
                         <div class="d-flex justify-content-between">
                         <div class="col-md-6 form-group text-center" style="margin: auto;">
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Send Confirmation Code</button>
+                            <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Save Passwords</button>
                         </div>
                     </div>
 

@@ -126,9 +126,15 @@
                         }else if(isset($_GET['error'])){
                             if($_GET['error'] == 'loginerror'){
 
-                                echo '<p style="color:red">Login error please check your login or password</p>';
+                                echo '<p style="color:red">Login error please check your credentials or account verification</p>';
 
 
+                            }
+                        }else if(isset($_GET['success'])){
+                            if($_GET['success'] == 'pwdchanged'){
+                                echo '<p style="color:green">You are successfully changed the password</p>';
+                            }else if($_GET['success'] == 'accountverified'){
+                                echo '<p style="color:green">You are successfully verified your account</p>';
                             }
                         }
                        

@@ -129,8 +129,11 @@
                                 echo '<p style="color:red">Login error please check your login or password</p>';
 
 
-                            }else if($_GET['error'] == 'accountnotfound'){
+                        }else if($_GET['error'] == 'accountnotfound'){
                                 echo '<p style="color:red">Your account is not found</p>';
+                        }
+                        else if($_GET['error'] == 'invalidcode'){
+                            echo '<p style="color:red">Invalid Code</p>';
                         }
                         }else if(isset($_GET['success'])){
                             if($_GET['success'] == 'codesent'){

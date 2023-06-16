@@ -22,7 +22,7 @@ if ($result->num_rows === 1) {
 
 
 }else{
-    header("Location: ../verify.php?error=accountnotfound");
+    header("Location: ../verify.php?error=invalidcode");
     exit();
 }
 

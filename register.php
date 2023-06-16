@@ -124,6 +124,14 @@
              <div class="col-lg-7 mb-5 mx-auto">
                  <div class="contact-form bg-light p-30">
                     <div id="success"></div>
+                    <?php
+                        if(isset($_GET['error'])){
+
+                            if($_GET['error'] == 'accountexists'){
+                                echo '<p style="color:red">Username or email is already used by someone</p>';
+                            }
+                        }
+                     ?>
                     <form action="helpers/reg.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
                             <input type="text" name="fname" class="form-control" id="fname" placeholder="First Name"
