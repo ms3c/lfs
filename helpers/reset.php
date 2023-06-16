@@ -4,9 +4,9 @@ session_start();
 include "dbcon.inc.php";
 
 
-$code = $_POST['code'];
+$account = $_POST['account'];
 
-$query = "SELECT * FROM users WHERE resetcode = '$code'";
+$query = "SELECT * FROM users WHERE username = '$account' OR email = '$account'";
 
 
 $result = $conn->query($query);

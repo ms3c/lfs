@@ -4,9 +4,9 @@ session_start();
 include "dbcon.inc.php";
 
 
-$code = $_POST['account'];
+$code = $_POST['code'];
 
-$query = "SELECT * FROM users WHERE code = '$code'";
+$query = "SELECT * FROM users WHERE resetcode = '$code'";
 
 
 $result = $conn->query($query);
@@ -15,9 +15,8 @@ $result = $conn->query($query);
 if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
     
-    $code = $row['resetcode'];
     $token = $row['resettoken'];
- 
+    //echo $token;
     header("Location: ../setpassword.php?token=$token");
 
 

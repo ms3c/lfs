@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<?php
+
+session_start();
+$_SESSION['resettoken'] = $_GET['token'];
+?>
 <html lang="en">
+
 
 <head>
     <meta charset="utf-8">
@@ -101,7 +107,7 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php">Home</a>
-                    <span class="breadcrumb-item active">Reset Password</span>
+                    <span class="breadcrumb-item active">Set New Password</span>
                 </nav>
             </div>
         </div>
@@ -140,12 +146,19 @@
                         
                         ?>
                     </div>
-                    <form action="helpers/reset.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
+                    <form action="helpers/savepwd.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
 
-                            <input type="text" name="account" class="form-control" id="username" placeholder="Email or Username"
+                            <input type="text" name="pwd" class="form-control" id="username" placeholder="Email new password"
                                 required="required" data-validation-required-message="Please enter your user name" />
                             <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+
+                        <input type="text" name="pwd2" class="form-control" id="username" placeholder="Verify new password"
+                            required="required" data-validation-required-message="Please enter your user name" />
+                        <p class="help-block text-danger"></p>
                         </div>
                 
                                                 

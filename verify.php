@@ -140,7 +140,7 @@
                         
                         ?>
                     </div>
-                    <form action="helpers/reset.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
+                    <form action="helpers/setnewpwd.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
 
                             <input type="text" name="code" class="form-control" id="username" placeholder="Verification Code"
