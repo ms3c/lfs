@@ -12,16 +12,17 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(50) NOT NULL,
+  `link` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO `categories` (`id`, `category_name`) VALUES
-(1,	'Identity Cards'),
-(2,	'Digital Item'),
-(3,	'Wallets'),
-(4,	'Books'),
-(5,	'Money'),
-(6,	'Bags');
+INSERT INTO `categories` (`id`, `category_name`, `link`) VALUES
+(1,	'Identity Cards',	''),
+(2,	'Digital Item',	''),
+(3,	'Wallets',	''),
+(4,	'Books',	''),
+(5,	'Money',	''),
+(6,	'Bags',	'');
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items` (
@@ -49,8 +50,7 @@ CREATE TABLE `items` (
 INSERT INTO `items` (`item_id`, `item_name`, `category`, `description`, `postedby`, `location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `type`, `claimed_by`, `claimed_date`, `image`) VALUES
 (1,	'Laptop',	'Electronics',	'Silver MacBook Pro',	8,	'Cafeteria',	NULL,	'2023-05-15',	NULL,	'John Smith',	'john@example.com',	0,	'Lost',	NULL,	NULL,	'img/product-1.jpg'),
 (2,	'Wallet',	'Books',	'Black leather wallet',	8,	'Park',	NULL,	'2023-05-18',	NULL,	'Jane Doe',	'jane@example.com',	1,	'Lost',	'Mary Johnson',	'2023-05-20',	'img/product-1.jpg'),
-(3,	'Keychain',	'Wallets',	'Red keychain with a car logo',	1,	'Bus Stop',	NULL,	'2023-05-21',	NULL,	'David Wilson',	'david@example.com',	0,	'Found',	NULL,	NULL,	'img/product-1.jpg'),
-(4,	'Jacket',	'Identity Cards',	'Blue denim jacket',	8,	'Maktaba',	'',	'2023-05-12',	NULL,	'Emily Brown',	'emily@example.com',	1,	'Found',	'Lisa Thompson',	'2023-05-14',	'img/product-1.jpg');
+(3,	'Keychain',	'Wallets',	'Red keychain with a car logo',	1,	'Bus Stop',	NULL,	'2023-05-21',	NULL,	'David Wilson',	'david@example.com',	0,	'Found',	NULL,	NULL,	'img/product-1.jpg');
 
 DROP TABLE IF EXISTS `lost_items`;
 CREATE TABLE `lost_items` (
@@ -101,8 +101,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`, `verified`) VALUES
-(1,	'admin',	'admin@ifm.tz',	'81dc9bdb52d04dc20036dbd8313ed055',	'System',	' ',	'Administrator',	'',	'+255693338637',	1,	700209,	'02562f7d295ae25f12356a41638bf1c88260147c',	1686931605,	NULL,	1),
-(8,	'mohamed',	'mohamed@ifm.ac.tz',	'25d55ad283aa400af464c76d713c07ad',	'Mohamed',	'Issa',	'Singano',	NULL,	'0755199399',	2,	180883,	'afb422637964258f43d086172c9e09af5cb61001',	1686930246,	NULL,	1),
-(18,	'moh',	'mohamed@pulsans.com',	'94e510ecc1b1d7a405c0e7aa18db792b',	'Mohamed',	'ISSA',	'Singano',	NULL,	'+255693338637',	2,	NULL,	NULL,	NULL,	'9eb708a58e06544fed1c69b9f98975fb67890c83',	1);
+(1,	'admin',	'admin@ifm.tz',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'System',	' ',	'Administrator',	'',	'+255693338637',	1,	907226,	'5644f1a1ecfc5234b06baf2f55bdd85f06e896da',	1686945413,	NULL,	1),
+(8,	'user',	'user@ifm.ac.tz',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'Mohamed',	'Issa',	'Singano',	NULL,	'0755199399',	2,	222398,	'92c56c4ad88c3880b1dc29ad56681fefea5fe27f',	1686944431,	NULL,	1);
 
--- 2023-06-16 17:17:06
+-- 2023-06-16 20:52:51
