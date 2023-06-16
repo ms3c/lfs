@@ -381,10 +381,27 @@ session_start();
                 $sort = mysqli_real_escape_string($conn, $_GET['sortedbyplace']);
                 
                 $query = "SELECT * FROM items WHERE location_found = '$sort' OR location_lost = '$sort'";
-        }else{
+
+        }else if(isset($_GET['sorterfound'])){
+
+            $sort = mysqli_real_escape_string($conn, $_GET['sorterfound']);
+            
+            if($sort == 'Found'){
                 
-                $query = "SELECT * FROM items";
-        }
+                $query = "SELECT * FROM items WHERE type = '$sort'";
+
+            }else if($sort == 'Lost'){
+
+                $query = "SELECT * FROM items WHERE type = '$sort'";
+
+            }else{
+            $query = "SELECT * FROM items";
+              }
+             }else{
+
+              $query = "SELECT * FROM items";
+
+             }
         
         $res = $conn->query($query);
 

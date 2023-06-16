@@ -12,6 +12,8 @@ session_start();
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+     <!--<script async src="utilities/chat-widget.js"></script> -->
+
     <style>
     .lost-badge {
       display: inline-block;
@@ -133,25 +135,25 @@ session_start();
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <a href="post.php"><h1 class="fa fa-plus text-primary m-0 mr-3"></h1></a>
-                    <h5 class="font-weight-semi-bold m-0">Post ad</h5>
+                    <a href="post.php"><h5 class="font-weight-semi-bold m-0">Post ad</h5></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                    <a href="#"><h1 class="fa fa-handshake text-primary m-0 mr-2"></h1></a>
-                    <h5 class="font-weight-semi-bold m-0">Found Item</h5>
+                    <a href="items.php?sorterfound=Found"><h1 class="fa fa-handshake text-primary m-0 mr-2"></h1></a>
+                    <a href="items.php?sorterfound=Found"><h5 class="font-weight-semi-bold m-0">Found Item</h5></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                    <a href="#"><h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1></a>
-                    <h5 class="font-weight-semi-bold m-0">Return</h5>
+                <a href="items.php?sorterfound=Lost"><h1 class="fas fa-binoculars text-primary m-0 mr-3"></h1></a>
+                    <a href="items.php?sorterfound=Lost"><h5 class="font-weight-semi-bold m-0">Lost Items</h5></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                    <a href="#"><h1 class="fa fa-question-circle text-primary m-0 mr-3"></h1></a>
-                    <h5 class="font-weight-semi-bold m-0">Get Help</h5>
+                    <a href="help.php"><h1 class="fa fa-question-circle text-primary m-0 mr-3"></h1></a>
+                    <a href="help.php"><h5 class="font-weight-semi-bold m-0">Get Help</h5></a>
                 </div>
             </div>
         </div>
