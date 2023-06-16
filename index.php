@@ -335,9 +335,9 @@ session_start();
                     while($row = mysqli_fetch_assoc($res)){
                         $category_name = $row['category_name'];
 
-                        echo '<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <a href="#" style="color:black"><label class="custom-control-label" for="price-all">'.$category_name.'</label></a>
-                        </div>';
+                        echo "<div class='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3'>
+                        <a href='items.php?sortedby=$category_name' style='color:black'><p class='custom-control-label' for='price-all'>$category_name</p></a>
+                        </div>";
 
                     }
 
@@ -361,9 +361,9 @@ session_start();
                     while($row = mysqli_fetch_assoc($res)){
                         $place = $row['place_name'];
 
-                        echo '<div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <a href="#" style="color:black"><label class="custom-control-label" for="price-all">'.$place.'</label></a>
-                        </div>';
+                        echo "<div class='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3'>
+                        <a href='items.php?sortedbyplace=$place' style='color:black'><p class='custom-control-label' for='price-all'>$place</p></a>
+                        </div>";
 
                     }
 

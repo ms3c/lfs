@@ -276,36 +276,24 @@ session_start();
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by Category</span></h5>
                 <div class="bg-light p-4 mb-30">
                     <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">Electronics</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="custom-control-label" for="price-1">Non Electronics</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2">
-                            <label class="custom-control-label" for="price-2">Identity Cards</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3">
-                            <label class="custom-control-label" for="price-3">Money</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4">
-                            <label class="custom-control-label" for="price-4">Bags</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5">
-                            <label class="custom-control-label" for="price-5">Books</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
+                    <?php    
+                    include 'helpers/dbcon.inc.php';
+                    $query = "SELECT * FROM categories";
+                    $res = $conn->query($query);
+
+                    while($row = mysqli_fetch_assoc($res)){
+                        $category_name = $row['category_name'];
+
+                        echo "<div class='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3'>
+                        <a href='items.php?sortedby=$category_name' style='color:black'><p class='custom-control-label' for='price-all'>$category_name</p></a>
+                        </div>";
+
+                    }
+
+                      
+                        
+                    ?>
+                        
                     </form>
                 </div>
                 <!-- Price End -->
@@ -314,41 +302,24 @@ session_start();
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by Places</span></h5>
                 <div class="bg-light p-4 mb-30">
                     <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="color-all">
-                            <label class="custom-control-label" for="price-all">Block A</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-1">
-                            <label class="custom-control-label" for="color-1">Block B</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-2">
-                            <label class="custom-control-label" for="color-2">Block C</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-3">
-                            <label class="custom-control-label" for="color-3">Block D</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-3">
-                            <label class="custom-control-label" for="color-3">IFM Canteen</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-4">
-                            <label class="custom-control-label" for="color-4">Maktaba</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5">IFM Airport</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
+                    <?php    
+                    include 'helpers/dbcon.inc.php';
+                    $query = "SELECT * FROM places";
+                    $res = $conn->query($query);
+
+                    while($row = mysqli_fetch_assoc($res)){
+                        $place = $row['place_name'];
+
+                        echo "<div class='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3'>
+                        <a href='items.php?sortedbyplace=$place' style='color:black'><p class='custom-control-label' for='price-all'>$place</p></a>
+                        </div>";
+
+                    }
+
+                      
+                        
+                    ?>
+                        
                     </form>
                 </div>
                 <!-- Color End -->
@@ -395,35 +366,24 @@ session_start();
 
         include 'helpers/dbcon.inc.php';
         
+        $query = '';
 
         if(isset($_GET['sortedby'])){
 
 
-            if($_GET['sortedby'] == 'Identity Cards'){
+                $sort = mysqli_real_escape_string($conn, $_GET['sortedby']);
 
-                $sort = $_GET['sortedby'];
                 $query = "SELECT * FROM items WHERE category = '$sort'";
-
-            }else if($_GET['sortedby'] == 'Digital Item'){
-
-                $sort = $_GET['sortedby'];
-                $query = "SELECT * FROM items WHERE category = '$sort'";
-
-            }else if($_GET['sortedby'] == 'Wallets'){
-
-                $sort = $_GET['sortedby'];
-                $query = "SELECT * FROM items WHERE category = '$sort'";
-
-            }else if($_GET['sortedby'] == 'Books'){
-
-                $sort = $_GET['sortedby'];
-                $query = "SELECT * FROM items WHERE category = '$sort'";
-            }
-
             
 
-            
+        }else if(isset($_GET['sortedbyplace'])){
 
+                $sort = mysqli_real_escape_string($conn, $_GET['sortedbyplace']);
+                
+                $query = "SELECT * FROM items WHERE location_found = '$sort' OR location_lost = '$sort'";
+        }else{
+                
+                $query = "SELECT * FROM items";
         }
         
         $res = $conn->query($query);
