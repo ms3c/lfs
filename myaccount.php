@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['username'])){
+    Header("Location: login.php?warning=youneedtologinfirst");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,9 +156,13 @@ session_start();
                     <tbody class="align-middle">
                     <?php
                     include 'helpers/dbcon.inc.php';
+
+                    $uid = $_SESSION['id'];
+                    
                     $sql = "SELECT items.*, users.*
                     FROM items
-                    INNER JOIN users ON items.postedby = users.id ORDER BY item_id DESC";
+                    INNER JOIN users ON items.postedby = users.id WHERE users.id = $uid ORDER BY item_id DESC";
+
 
                     $result = $conn->query($sql);
 

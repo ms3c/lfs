@@ -29,7 +29,7 @@ if ($result->num_rows === 1) {
 }
 
 // Invalid login credentials, redirect back to the login page with an error message
-header("Location: ../login.php?error=1");
+header("Location: ../login.php?error=loginerror");
 exit();
 
 

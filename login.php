@@ -123,7 +123,26 @@
         <div class="row px-xl-5">
              <div class="col-lg-7 mb-5 mx-auto">
                  <div class="contact-form bg-light p-30">
-                    <div id="success"></div>
+                    <div id="success">
+                        <?php
+                        if(isset($_GET['warning'])){
+
+                            if($_GET['warning'] == 'youneedtologinfirst'){
+                                echo '<p style="color:red">You need to login firt before accessing my account</p>';
+                            }
+
+                        }else if(isset($_GET['error'])){
+                            if($_GET['error'] == 'loginerror'){
+
+                                echo '<p style="color:red">Login error please check your login or password</p>';
+
+
+                            }
+                        }
+                       
+                        
+                        ?>
+                    </div>
                     <form action="helpers/login.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
                             <input type="text" name="username" class="form-control" id="username" placeholder="User"
