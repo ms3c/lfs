@@ -4,15 +4,15 @@ session_start();
 include "dbcon.inc.php";
 
 
-$fname = $_POST['fname'];
+$fname = mysqli_real_escape_string($conn, $_POST['fname']);
 
-$mname = $_POST['mname'];
+$mname = mysqli_real_escape_string($conn, $_POST['mname']);
 
-$lname = $_POST['lname'];
+$lname = mysqli_real_escape_string($conn, $_POST['lname']);
 
-$email = $_POST['email'];
+$email = mysqli_real_escape_string($conn, $_POST['email']);
 
-$phone = $_POST['phone'];
+$phone = mysqli_real_escape_string($conn, $_POST['phone']);
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -33,7 +33,7 @@ if ($checkres) {
 
 if ($password === $password1) {
 
-    $hashedpwd = md5($password);
+    $hashedpwd = sha1($password);
 
 } else {
 

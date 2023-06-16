@@ -15,29 +15,17 @@ if(!isset($_SESSION['role'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example">
     <!-- Css -->
-    <style>
-    .button-container {
-      display: flex; /* Displays the buttons in a row */
-      justify-content: center; /* Centers the buttons horizontally */
-    }
-
-    .button-container button {
-      margin: 0 5px; /* Adds some spacing between the buttons */
-    }
-  </style>
-
-<link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css'>
-<link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css'><link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./dist/styles.css">
     <link rel="stylesheet" href="./dist/all.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
-    <title>All Users</title>
+    <title>Dashboard | LFS</title>
 </head>
 
 <body>
 <!--Container -->
-<div class="mx-auto bg-grey-lightest">
+<div class="mx-auto bg-grey-400">
     <!--Screen-->
     <div class="min-h-screen flex flex-col">
         <!--Header Section Starts Here-->
@@ -60,7 +48,7 @@ if(!isset($_SESSION['role'])){
                     ?>
                     <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
                         <ul class="list-reset">
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
+                        <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
                           <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
                           <li><hr class="border-t mx-2 border-grey-ligght"></li>
                           <li><a href="../helpers/logout.php" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
@@ -76,7 +64,7 @@ if(!isset($_SESSION['role'])){
             <aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
 
                 <ul class="list-reset flex flex-col">
-                    <li class=" w-full h-full py-3 px-2 border-b border-light-border">
+                    <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white">
                         <a href="index.php"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-tachometer-alt float-left mx-2"></i>
@@ -93,7 +81,7 @@ if(!isset($_SESSION['role'])){
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
-                    <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
                         <a href="users.php"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-table float-left mx-2"></i>
@@ -106,6 +94,7 @@ if(!isset($_SESSION['role'])){
                     </li>
                 </ul>
 
+
             </aside>
             <!--/Sidebar-->
             <!--Main-->
@@ -113,7 +102,15 @@ if(!isset($_SESSION['role'])){
 
                 <div class="flex flex-col">
                     <!-- Card Sextion Starts Here -->
-                    
+                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                        <!--Horizontal form-->
+                        
+                        <!--/Horizontal form-->
+
+                        <!--Underline form-->
+                       
+                        <!--/Underline form-->
+                    </div>
                     <!-- /Cards Section Ends Here -->
 
                     <!--Grid Form-->
@@ -121,71 +118,38 @@ if(!isset($_SESSION['role'])){
                     <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
                         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
                             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
-                                Full Table
+                                Form Grid
                             </div>
                             <div class="p-3">
-                                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Names</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                            <th>Change password</th>
-                                            <th>Action</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-
-                                            include '../helpers/dbcon.inc.php';
-                                            $sql = "SELECT * FROM users";
-
-
-                                            $res = $conn->query($sql);
-
-                                            while($row = mysqli_fetch_assoc($res)){
-                                                $id = $row['id'];
-                                                $email =  $row['email'];
-                                                $names = $row['first_name'] . ' ' . $row['first_name'] .' '. $row['lastname'];
-
-                                                $phone = $row['phone'];
-    
-                                            
-
-                                                echo "<tr>
-                                                
-                                                <td>$id</td>
-                                                <td>$names</td>
-                                                <td>$phone</td>
-                                                <td>$email</td>
-                                                <td>
-                                                <div class='button-container'>
-                                                <a href='reset.php?id=$id' style='color:green'><button>Edit</button></a>
-                                                </div>
-                                                </td>
-                                                <td>
-                                                <div class='button-container'>
-                                                <a href='#'><button>Edit</button></a>
-                                                <a href='deleteuser.php?id=$id' style='color:red'><button>Delete</button></a>
-                                                </div>
-                                                </td>
-                                                
-
-                                                </tr>";
-
-                                            }
-
-
-                                        
-
-
-                                            ?>
-                                       
-
-                                    </tbody>
-                                </table>
+                                <form action="pwdresetuser.php" method="POST" class="w-full">
+                                    <div class="flex flex-wrap -mx-3 mb-6">
+                                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-first-name">
+                                                User ID
+                                            </label>
+                                            <input  <?php $id = $_GET['id']; echo "value=$id";?> name="id" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
+                                                   id="grid-first-name" type="number"  placeholder="">
+                                            <p class="text-red-500 text-xs italic"></p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 px-3">
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                                   for="grid-last-name">
+                                                New Password
+                                            </label>
+                                            <input class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
+                                                   id="grid-last-name" name="password" type="password" placeholder="">
+                                        </div>
+                                    </div>
+                                  
+                                    
+                                    <div class="md:w-2/3">
+                                            <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                                                    type="submit">
+                                                Update Password
+                                            </button>
+                                        </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -196,7 +160,7 @@ if(!isset($_SESSION['role'])){
         </div>
         <!--Footer-->
         <footer class="bg-grey-darkest text-white p-2">
-        <div class="flex flex-1 mx-auto">&copy; IFM LFS</div>
+            <div class="flex flex-1 mx-auto">&copy; IFM LFMS</div>
         </footer>
         <!--/footer-->
 
@@ -205,17 +169,7 @@ if(!isset($_SESSION['role'])){
 </div>
 
 <script src="./main.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
-<script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
-<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js'></script>
-<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js'></script>
-<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js'></script>
-<script src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js'></script>
-<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js'></script>
-<script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js'></script>
-<script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js'></script><script  src="./script.js"></script>
+
 </body>
 
 </html>

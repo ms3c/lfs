@@ -16,7 +16,7 @@ $result = $conn->query($query);
 if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
     // Verify the password (using md5 hashing)
-    if (md5($password) === $row['password']) {
+    if (sha1($password) === $row['password']) {
         // Successful login, redirect to a dashboard page
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $row['role'];

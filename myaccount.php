@@ -107,6 +107,7 @@ if(!isset($_SESSION['username'])){
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
+                            <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                         </div>
                         
                     </div>
@@ -175,7 +176,7 @@ if(!isset($_SESSION['username'])){
                             <td class='align-middle'>$item</td>
                             <td class='align-middle'>$place</td>
                             <td class='align-middle'>$type</td>
-                            <td class='align-middle'><a href='removeitem.php?id=$id'><button class='btn btn-sm btn-danger'><i class='fa fa-times'></i></button></a></td>
+                            <td class='align-middle'><a href='helpers/removeitem.php?id=$id'><button class='btn btn-sm btn-danger'><i class='fa fa-times'></i></button></a></td>
                             </tr>";
 
                         }

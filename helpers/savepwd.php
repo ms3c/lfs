@@ -19,7 +19,7 @@ if ($result->num_rows === 1) {
 
     if (time() <= $expiration) {
 
-            $newpwd = md5($pwd);
+            $newpwd = sha1($pwd);
 
         $sql ="UPDATE `users` SET
         `password` = '$newpwd'
