@@ -111,7 +111,7 @@
 
     <!-- Contact Start -->
     <div class="container-fluid text-center">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Login</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Code Verification</span></h2>
         <div class="row px-xl-5">
              <div class="col-lg-7 mb-5 mx-auto">
                  <div class="contact-form bg-light p-30">
@@ -143,16 +143,17 @@
                     <form action="helpers/reset.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
 
-                            <input type="text" name="account" class="form-control" id="username" placeholder="Email or Username"
-                                required="required" data-validation-required-message="Please enter your user name" />
+                            <input type="text" name="code" class="form-control" id="username" placeholder="Verification Code"
+                                required="required" data-validation-required-message="Please enter your code" />
                             <p class="help-block text-danger"></p>
+
                         </div>
                 
                                                 
                         <div class="d-flex justify-content-between">
                         <div class="col-md-6 form-group text-center" style="margin: auto;">
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Send Confirmation Code</button>
+                            <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Change Passwords</button>
                         </div>
                     </div>
 
