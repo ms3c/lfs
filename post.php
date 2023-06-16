@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['username'])){
+    header('location: login.php?warning=youneedtologinfirst');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +12,7 @@ session_start();
     <meta charset="utf-8">
     <title>Lost found Systems</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -65,18 +68,7 @@ session_start();
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1"> LFS</span>
                 </a>
             </div>
-            <div class="col-lg-4 col-6 text-left">
-                <form action="search.php">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for items">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            
             <div class="col-lg-4 col-6 text-right">
                 <?php
                 if(isset($_SESSION['username'])){
@@ -115,6 +107,7 @@ session_start();
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
+                            <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                         </div>
                         
                     </div>
@@ -131,7 +124,8 @@ session_start();
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">Post Item</a>
+                    <a class="breadcrumb-item text-dark" href="post.php">Post Item</a>
+                    <a class="breadcrumb-item text-dark" href="myaccount.php">My Account</a>
                 </nav>
             </div>
         </div>

@@ -254,71 +254,7 @@ session_start();
             </div>
         </div>
     </div>
-    <!-- Categories End -->
 
-
-    <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Lost</span></h2>
-        <div class="row px-xl-5">
-
-
-        <?php
-
-        include 'helpers/dbcon.inc.php';
-        $query = "SELECT * FROM items ORDER BY item_id DESC LIMIT 4";
-        $res = $conn->query($query);
-
-
-        $badege = '<span class="lost-badge">Lost</span>';
-
-        $badge = 'lost-badge';
-
-        while($row = mysqli_fetch_assoc($res)){
-            $badg = '';
-
-            if($row["type"] === 'Found'){
-                $badg = '<span class="found-badge">Found</span>';
-            }else if($row["type"] === 'Lost'){
-
-                $badg = '<span class="lost-badge">Lost</span>';
-
-
-            }
-
-            echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="' . $row["image"] .' " alt="">
-                        <div class="product-action">
-
-                            <a class="btn btn-outline-dark btn-square" href="detail.php?id='.$row["item_id"].'"><i class="fa fa-search"></i></a>
-
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">' . $row["item_name"] .'<img src="img/new_flash.gif" width="44px" height="33px"> </a>'.$badg.'<br>
-                        <a class="h6 text-decoration-none text-truncate" href="">' . 'Place: '.$row["location_found"] .' </a>
-
-                
-                    </div>
-                </div>
-            </div>';
-
-        }
-        
-            ?>
-            
-        </div>
-    </div>
-    <!-- Products End -->
-
-
-    <!-- Offer Start -->
-    <!-- Offer End -->
-
-
-    <!-- Products Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
@@ -417,6 +353,8 @@ session_start();
 
         include 'helpers/dbcon.inc.php';
 
+        $search = $_GET['query'];
+
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $itemsPerPage = 8;
 
@@ -424,7 +362,7 @@ session_start();
         $offset = ($page - 1) * $itemsPerPage;
 
         // Construct the SQL query with pagination
-        $query = "SELECT * FROM items LIMIT $itemsPerPage OFFSET $offset";
+        $query = "SELECT * FROM items WHERE item_name LIKE '%$search%' LIMIT $itemsPerPage OFFSET $offset";
         //$query = "SELECT * FROM items ORDER BY item_id DESC";
         $res = $conn->query($query);
        
@@ -469,11 +407,11 @@ session_start();
                     <div class="col-12">
                         <nav>
                           <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="index.php?page=1">Previous</span></a></li>
+                            <li class="page-item"><a class="page-link" href="search.php?page=1">Previous</span></a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="index.php?page=2">2</a></li>
-                            <li class="page-item"><a class="page-link" href="index.php?page=3">3</a></li>
-                            <li class="page-item"><a class="page-link" href="index.php?page=2">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="search.php?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="search.php?page=3">3</a></li>
+                            <li class="page-item"><a class="page-link" href="search.php?page=2">Next</a></li>
                           </ul>
                         </nav>
                     </div>

@@ -44,16 +44,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="search.php">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for items">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+                
             </div>
             <div class="col-lg-4 col-6 text-right">
                 <?php
@@ -90,10 +81,11 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
+                    <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="post.php" class="nav-item nav-link">Post an Item</a>
-                        </div>
+                            <a href="post.php" class="nav-item nav-link">Post</a>
+                            <a href="myaccount.php" class="nav-item nav-link">My Account</a>
+                    </div>
                         
                     </div>
                 </nav>
@@ -128,7 +120,7 @@
                         if(isset($_GET['warning'])){
 
                             if($_GET['warning'] == 'youneedtologinfirst'){
-                                echo '<p style="color:red">You need to login firt before accessing my account</p>';
+                                echo '<p style="color:red">You need to login firt</p>';
                             }
 
                         }else if(isset($_GET['error'])){

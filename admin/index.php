@@ -4,7 +4,7 @@ session_start();
 if(!isset($_SESSION['role'])){
     header("Location: ../login.php");
     if($_SESSION['role'] != '1'){
-        header("Location: ../login.php?e");
+        header("Location: ../login.php");
     }
 }
 
@@ -48,10 +48,10 @@ if(!isset($_SESSION['role'])){
                     ?>
                     <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
                         <ul class="list-reset">
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
+                        <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
                           <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
                           <li><hr class="border-t mx-2 border-grey-ligght"></li>
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
+                          <li><a href="../helpers/logout.php" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
                         </ul>
                     </div>
                 </div>

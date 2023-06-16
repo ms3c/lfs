@@ -3,13 +3,13 @@
 session_start();
 if(!isset($_SESSION['role'])){
     header("Location: ../login.php");
-    exit();
+    if($_SESSION['role'] != '1'){
+        header("Location: ../login.php");
+    }
 }
-if($_SESSION['role'] != '1'){
-    header("Location: ../login.php?error=notadmin");
-    exit();
-}
+
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,7 +63,7 @@ if($_SESSION['role'] != '1'){
                           <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
                           <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
                           <li><hr class="border-t mx-2 border-grey-ligght"></li>
-                          <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
+                          <li><a href="../helpers/logout.php" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
                         </ul>
                     </div>
                 </div>

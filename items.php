@@ -109,10 +109,11 @@ session_start();
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
+                    <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="post.php" class="nav-item nav-link">Contact</a>
-                        </div>
+                            <a href="post.php" class="nav-item nav-link">Post</a>
+                            <a href="myaccount.php" class="nav-item nav-link">My Account</a>
+                    </div>
                         
                     </div>
                 </nav>
