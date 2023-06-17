@@ -151,13 +151,40 @@ if(!isset($_SESSION['username'])){
                                 <input name="place" class="form-control" type="text" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
+                            <label>Near Location</label>
+                        <select class="form-control" name="nearby" id="subject" required="required" data-validation-required-message="Please select a subject">
+                            <option value="">Nearby</option>
+                            <?php 
+                 
+
+                                include 'helpers/dbcon.inc.php';
+                                $sql = "SELECT * FROM places";
+                                $result = $conn->query($sql);
+                                while($row = $result->fetch_assoc()){
+                                    echo '<option value="'.$row['place_name'].'">'.$row['place_name'].'</option>';
+                                }
+                                ?>
+                         
+                        </select>
+                        
+                        
+                            </div>
+                            <div class="col-md-6 form-group">
                             <label>Category</label>
                         <select class="form-control" name="cotegory" id="subject" required="required" data-validation-required-message="Please select a subject">
                             <option value="">Select a Category</option>
-                            <option value="Digital Item">Digital Item</option>
-                            <option value="Identity Cards">Identity Cards</option>
-                            <option value="Books">Books</option>
-                            <option value="Wallets">Wallets</option>
+
+                            <?php 
+                 
+
+                            include 'helpers/dbcon.inc.php';
+                            $sql = "SELECT * FROM categories";
+                            $result = $conn->query($sql);
+                            while($row = $result->fetch_assoc()){
+                                echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
+                            }
+                            ?>
+                       
                         </select>
                             </div>
                             <div class="col-md-6 form-group">
@@ -168,7 +195,10 @@ if(!isset($_SESSION['username'])){
                             <option value="Found">Found</option>
                          
                         </select>
+                        
+                        
                             </div>
+                            
                             <div class="col-md-6 form-group">
                                 <label>Date</label>
                                 <input name="date" class="form-control" type="date" placeholder="">
@@ -198,7 +228,7 @@ if(!isset($_SESSION['username'])){
                         </div>
                     </div>
                     <div class="control-group">
-                        <textarea class="form-control" name="description" rows="8" id="message" placeholder="Brief description about the item"
+                        <textarea class="form-control" name="description" rows="8" id="message" placeholder="Additional description about the item"
                             data-validation-required-message="Please enter your item description"></textarea>
                         <p class="help-block text-danger"></p>
                     </div>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +8,34 @@
     <meta charset="utf-8">
     <title>Lost found Systems</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+     <!--<script async src="utilities/chat-widget.js"></script> -->
+
+    <style>
+    .lost-badge {
+      display: inline-block;
+      background-color: #FF0000;
+      color: #FFFFFF;
+      font-size: 10px;
+      padding: 4px;
+      border-radius: 50%;
+      text-transform: uppercase;
+    }
+    .found-badge {
+      display: inline-block;
+      background-color: #00FF00;
+      color: #FFFFFF;
+      font-size: 10px;
+      padding: 4px;
+      border-radius: 50%;
+      text-transform: uppercase;
+    }
+    
+   
+  </style>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,7 +66,7 @@
             <div class="col-lg-4 col-6 text-left">
                 <form action="search.php">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for items">
+                        <input name="query" type="text" class="form-control" placeholder="Search for items">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -50,8 +76,20 @@
                 </form>
             </div>
             <div class="col-lg-4 col-6 text-right">
-                <p class="m-0">Logged In</p>
-                <h5 class="m-0">System Admin</h5>
+                <?php
+                if(isset($_SESSION['username'])){
+                    $fname = $_SESSION['first_name'] .' '. $_SESSION['lastname'];
+
+                   echo '<p class="m-0"><a class="btn btn-danger" href="helpers/logout.php">Log out</a></p>
+                    <h5 class="m-0">'.$fname.'</h5>';
+                }else{
+                    echo '<p class="m-0"><a class="btn btn-primary" href="login.php">Login</a></p>
+                    <h5 class="m-0">Guest</h5>';
+                }
+
+               
+                ?>
+               
             </div>
         </div>
     </div>
@@ -74,7 +112,10 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="post.php" class="nav-item nav-link">Report Lost Item</a>
+                            <a href="post.php" class="nav-item nav-link">Post</a>
+                            <a href="myaccount.php" class="nav-item nav-link">My Account</a>
+                            <a href="myaclaims.php" class="nav-item nav-link">My Claims</a>
+
                         </div>
                         
                     </div>
@@ -218,7 +259,7 @@
                     
                     if($type == 'Found'){
 
-                        echo '<button class="btn btn-primary px-3"><i class="fa fa-hand-paper mr-1"></i>Claim This Item</button>';
+                        echo "<a href='account/claimitem.php?itemid=$id'><button class='btn btn-primary px-3'><i class='fa fa-hand-paper mr-1'></i>Claim This Item</button></a>";
 
                     }else if($type == 'Lost'){
 

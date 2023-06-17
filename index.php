@@ -114,6 +114,8 @@ session_start();
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
+                            <a href="myaclaims.php" class="nav-item nav-link">My Claims</a>
+
                         </div>
                         
                     </div>
@@ -268,7 +270,7 @@ session_start();
         <?php
 
         include 'helpers/dbcon.inc.php';
-        $query = "SELECT * FROM items ORDER BY item_id DESC LIMIT 4";
+        $query = "SELECT * FROM items WHERE status != 1 ORDER BY item_id DESC LIMIT 4";
         $res = $conn->query($query);
 
 
@@ -426,7 +428,7 @@ session_start();
         $offset = ($page - 1) * $itemsPerPage;
 
         // Construct the SQL query with pagination
-        $query = "SELECT * FROM items LIMIT $itemsPerPage OFFSET $offset";
+        $query = "SELECT * FROM items WHERE status != 1 LIMIT $itemsPerPage OFFSET $offset";
         //$query = "SELECT * FROM items ORDER BY item_id DESC";
         $res = $conn->query($query);
        
