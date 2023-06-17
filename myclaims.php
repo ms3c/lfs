@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['username'])){
-    
-    Header("Location: login.php?warning=youneedtologinfirst");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +12,8 @@ if(!isset($_SESSION['username'])){
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+     <!--<script async src="utilities/chat-widget.js"></script> -->
+
     <style>
     .lost-badge {
       display: inline-block;
@@ -67,7 +64,16 @@ if(!isset($_SESSION['username'])){
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                
+                <form action="search.php">
+                    <div class="input-group">
+                        <input name="query" type="text" class="form-control" placeholder="Search for items">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-lg-4 col-6 text-right">
                 <?php
@@ -108,6 +114,9 @@ if(!isset($_SESSION['username'])){
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
+                            <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
+                            <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
+
                         </div>
                         
                     </div>

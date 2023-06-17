@@ -1,10 +1,7 @@
-<!DOCTYPE html>
 <?php
 session_start();
-if(!isset($_SESSION['username'])){
-    header('location: login.php?warning=youneedtologinfirst');
-}
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -118,6 +115,7 @@ if(!isset($_SESSION['username'])){
                             <a href="post.php" class="nav-item nav-link">Post</a>
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                             <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
+                            <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
 
                         </div>
                         
