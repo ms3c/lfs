@@ -16,6 +16,7 @@ $result = $conn->query($query);
 if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
     // Verify the password (using md5 hashing)
+if($row['verified'] == 1){
     if (sha1($password) === $row['password']) {
         // Successful login, redirect to a dashboard page
         $_SESSION['username'] = $username;
@@ -32,6 +33,10 @@ if ($result->num_rows === 1) {
         exit();
         }
     }
+}
+}else if($row['verified'] == 0){
+    header("Location: ../login.php?error=notverified");
+    exit();
 }
 
 // Invalid login credentials, redirect back to the login page with an error message

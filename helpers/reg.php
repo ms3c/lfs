@@ -51,7 +51,7 @@ if($result){
     include "../mailer.php";
 
     MailHelper($token, $email, 1);
-    Header("Location: ../login.php?success=accountcreate");
+    Header("Location: ../confirmation.php?sent=emailsent&email=$email");
 }
 
 
