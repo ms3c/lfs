@@ -68,8 +68,12 @@ $photoname = 'helpers/'.$target_file;
 include "dbcon.inc.php";
 
 
-$sql = "INSERT INTO `items` (`item_name`, `category`, `description`, `postedby`,`location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `type`, `claimed_by`, `claimed_date`, `image`)
-VALUES ('$item_name', '$cotegory', '$description', '$userid', '$place', '$place', '$date', '$date', '$item_poster', NULL, NULL,'$type', NULL, NULL, '$photoname');";
+$sql = "INSERT INTO `items` (`item_name`, `category`, `description`, `postedby`, `location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `foundby`, `type`, `claimed_by`, `status`, `claimed_date`, `image`)
+VALUES ('$item_name', '$cotegory', '$description', '$userid', '$place', '$place', '$date', '$date', NULL, '$item_poster', '0', NULL, '$type', NULL, '0', NULL, '$photoname');";
+
+
+//$sql = "INSERT INTO `items` (`item_name`, `category`, `description`, `postedby`,`location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `type`, `claimed_by`, `claimed_date`, `image`)
+//VALUES ('$item_name', '$cotegory', '$description', '$userid', '$place', '$place', '$date', '$date', '$item_poster', NULL, NULL,'$type', NULL, NULL, '$photoname');";
 
 
 //echo $sql;

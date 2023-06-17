@@ -245,6 +245,7 @@ session_start();
                         $place =  $row['location_found'];
                         $phone = $row['phone'];
                         $type = $row['type'];
+                        $postedbyid = $row['postedby'];
                     
 
                         
@@ -263,10 +264,16 @@ session_start();
 
                     }else if($type == 'Lost'){
 
-                        echo '<a href="account/founditem.php?itemid='.$id.'"><button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found This Item</button></a>';
-                        
+                        if($postedbyid == $_SESSION['id']){
+                            echo '<a href="account/founditem.php?itemid='.$id.'"><button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found My Item</button></a>';
+
+                        }else if($postedby  != $_SESSION['id']){
+
+                            echo '<a href="account/founditem.php?itemid='.$id.'"><button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found This Item</button></a>';
+
+                        }
+
                     }
-                    
                     
                     
                     
@@ -281,7 +288,11 @@ session_start();
 
                     }else if($type == 'Lost'){
 
-                        echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
+                        if($postedbyid != $_SESSION['id']){
+
+                            echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
+
+                        }
 
 
                     }
