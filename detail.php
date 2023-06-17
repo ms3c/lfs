@@ -263,7 +263,7 @@ session_start();
 
                     }else if($type == 'Lost'){
 
-                        echo '<button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found This Item</button>';
+                        echo '<a href="account/founditem.php?itemid='.$id.'"><button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found This Item</button></a>';
                         
                     }
                     
@@ -275,13 +275,13 @@ session_start();
                     echo '<div class="d-flex align-items-center mb-4 pt-2">';
                     if($type == 'Found'){
 
-                        echo '<a href="tel:+1234567890" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the Person who found this item</a>';
+                        echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the Person who found this item</a>';
 
 
 
                     }else if($type == 'Lost'){
 
-                        echo '<a href="tel:+1234567890" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
+                        echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
 
 
                     }

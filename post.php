@@ -1,11 +1,10 @@
+<!DOCTYPE html>
 <?php
 session_start();
 if(!isset($_SESSION['username'])){
     header('location: login.php?warning=youneedtologinfirst');
 }
-
 ?>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,6 +15,8 @@ if(!isset($_SESSION['username'])){
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+     <!--<script async src="utilities/chat-widget.js"></script> -->
+
     <style>
     .lost-badge {
       display: inline-block;
@@ -42,9 +43,6 @@ if(!isset($_SESSION['username'])){
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
-    
-    <script src="https://cdn.tiny.cloud/1/1nymbt23vj2xvqe8l39lzk6tnqwilde6pbxqb94eipnfgyjg/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -63,12 +61,23 @@ if(!isset($_SESSION['username'])){
        
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none">
+                <a href="index.php" class="text-decoration-none">
                     <span class="h1 text-uppercase text-primary bg-dark px-2">IFM</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1"> LFS</span>
                 </a>
             </div>
-            
+            <div class="col-lg-4 col-6 text-left">
+                <form action="search.php">
+                    <div class="input-group">
+                        <input name="query" type="text" class="form-control" placeholder="Search for items">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="col-lg-4 col-6 text-right">
                 <?php
                 if(isset($_SESSION['username'])){
@@ -108,6 +117,8 @@ if(!isset($_SESSION['username'])){
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
+                            <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
+
                         </div>
                         
                     </div>

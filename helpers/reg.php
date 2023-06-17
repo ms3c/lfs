@@ -50,7 +50,7 @@ $result = $conn->query($query);
 if($result){
     include "../mailer.php";
 
-    MailHelper($token, $email);
+    MailHelper($token, $email, 1);
     Header("Location: ../login.php?success=accountcreate");
 }
 

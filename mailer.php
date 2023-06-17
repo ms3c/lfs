@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
-function MailHelper($token, $email){
+function MailHelper($token, $email, $type){
 
 
 
@@ -31,7 +31,11 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Account Confirmation';
-    $mail->Body = "Dear recipient,<br><br>Please click the link below to verify your account:<br><br><a href=https://lfs.ifm.tz/account/verify.php?token=$token>Verify Account</a><br><br>Thank you!";
+    if($type == 1){
+        $mail->Body = "Dear recipient,<br><br>Please click the link below to verify your account:<br><br><a href=https://lfs.ifm.tz/account/verify.php?token=$token>Verify Account</a><br><br>Thank you!";
+    }else if($type == 2){ 
+        $mail->Body = "Dear recipient,<br><br>The Item $token posted has been claimed!";
+    }
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
     echo 'Message has been sent';
