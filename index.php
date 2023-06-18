@@ -179,7 +179,7 @@ session_start();
                             <h6>Identity Cards</h6>
                             <?php
                             include 'helpers/dbcon.inc.php';
-                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Identity Cards'";
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Identity Cards' AND status != 1";
                             $result = $conn->query($sql);
 
                             if($result)
@@ -201,7 +201,7 @@ session_start();
                             <h6>Digital Items</h6>
                             <?php
                             include 'helpers/dbcon.inc.php';
-                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Digital Item'";
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Digital Item' AND status != 1";
                             $result = $conn->query($sql);
 
                             if($result)
@@ -223,7 +223,7 @@ session_start();
                             <h6>Wallets</h6>
                             <?php
                             include 'helpers/dbcon.inc.php';
-                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Wallets'";
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Wallets' AND status != 1";
                             $result = $conn->query($sql);
 
                             if($result)
@@ -245,7 +245,7 @@ session_start();
                             <h6>Books</h6>
                              <?php
                             include 'helpers/dbcon.inc.php';
-                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Books'";
+                            $sql = "SELECT COUNT(item_id) AS count FROM items WHERE category = 'Books' AND status != 1";
                             $result = $conn->query($sql);
 
                             if($result)
