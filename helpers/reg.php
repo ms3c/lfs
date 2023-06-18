@@ -40,15 +40,23 @@ if ($password === $password1) {
     header("Location: ../register.php?error=passwordmissmatch");  
 }
 $code = rand(100000, 999999);
+
+$vcode = rand(1000, 9999);
 $token = sha1(date("YmdHis") . (string) $code);
 
-$query = "INSERT INTO `users` (`username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`)
-VALUES ('$username', '$email', '$hashedpwd', '$fname', '$mname', '$lname', NULL, '$phone', '2', NULL, NULL, NULL, '$token');";
+$query = "INSERT INTO `users` (`username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`, `code`)
+VALUES ('$username', '$email', '$hashedpwd', '$fname', '$mname', '$lname', NULL, '$phone', '2', NULL, NULL, NULL, '$token', '$vcode');";
 
 $result = $conn->query($query);
 
 if($result){
     include "../mailer.php";
+    include "../sms.php";
+
+    $msg = "Dear $fname Your verification code is $vcode";
+
+
+    SMSHelper($msg, $phone);
 
     MailHelper($token, $email, 1);
     Header("Location: ../confirmation.php?sent=emailsent&email=$email");

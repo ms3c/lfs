@@ -37,20 +37,24 @@ CREATE TABLE `items` (
   `date_lost` varchar(255) DEFAULT NULL,
   `owner_name` varchar(255) DEFAULT NULL,
   `owner_contact` varchar(255) DEFAULT NULL,
-  `claimed` tinyint(1) DEFAULT NULL,
+  `claimed` tinyint(1) DEFAULT 0,
+  `foundby` int(11) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
-  `claimed_by` varchar(255) DEFAULT NULL,
+  `claimed_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT 0,
   `claimed_date` date DEFAULT NULL,
-  `image` varchar(50) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `postedby` (`postedby`),
-  CONSTRAINT `items_ibfk_1` FOREIGN KEY (`postedby`) REFERENCES `users` (`id`)
+  KEY `claimed_by` (`claimed_by`),
+  KEY `foundby` (`foundby`),
+  CONSTRAINT `items_ibfk_1` FOREIGN KEY (`postedby`) REFERENCES `users` (`id`),
+  CONSTRAINT `items_ibfk_2` FOREIGN KEY (`claimed_by`) REFERENCES `users` (`id`),
+  CONSTRAINT `items_ibfk_3` FOREIGN KEY (`foundby`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO `items` (`item_id`, `item_name`, `category`, `description`, `postedby`, `location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `type`, `claimed_by`, `claimed_date`, `image`) VALUES
-(1,	'Laptop',	'Electronics',	'Silver MacBook Pro',	8,	'Cafeteria',	NULL,	'2023-05-15',	NULL,	'John Smith',	'john@example.com',	0,	'Lost',	NULL,	NULL,	'img/product-1.jpg'),
-(2,	'Wallet',	'Books',	'Black leather wallet',	8,	'Park',	NULL,	'2023-05-18',	NULL,	'Jane Doe',	'jane@example.com',	1,	'Lost',	'Mary Johnson',	'2023-05-20',	'img/product-1.jpg'),
-(3,	'Keychain',	'Wallets',	'Red keychain with a car logo',	1,	'Bus Stop',	NULL,	'2023-05-21',	NULL,	'David Wilson',	'david@example.com',	0,	'Found',	NULL,	NULL,	'img/product-1.jpg');
+INSERT INTO `items` (`item_id`, `item_name`, `category`, `description`, `postedby`, `location_found`, `location_lost`, `date_found`, `date_lost`, `owner_name`, `owner_contact`, `claimed`, `foundby`, `type`, `claimed_by`, `status`, `claimed_date`, `image`) VALUES
+(13,	'Testin Item',	'Identity Cards',	'this item was lost',	20,	'Canteen',	'Canteen',	'2023-06-17',	'2023-06-17',	NULL,	'Mohamed Singano',	1,	NULL,	'Found',	19,	1,	NULL,	'helpers/uploads/0623173033201726432.png');
 
 DROP TABLE IF EXISTS `lost_items`;
 CREATE TABLE `lost_items` (
@@ -97,11 +101,15 @@ CREATE TABLE `users` (
   `expireat` int(50) DEFAULT NULL,
   `verifytoken` varchar(255) DEFAULT NULL,
   `verified` int(11) DEFAULT 0,
+  `code` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`, `verified`) VALUES
-(1,	'admin',	'admin@ifm.tz',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'System',	' ',	'Administrator',	'',	'+255693338637',	1,	907226,	'5644f1a1ecfc5234b06baf2f55bdd85f06e896da',	1686945413,	NULL,	1),
-(8,	'user',	'user@ifm.ac.tz',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'Mohamed',	'Issa',	'Singano',	NULL,	'0755199399',	2,	222398,	'92c56c4ad88c3880b1dc29ad56681fefea5fe27f',	1686944431,	NULL,	1);
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`, `verified`, `code`) VALUES
+(1,	'admin',	'singano2009@gmail.com',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'System',	' ',	'Administrator',	'',	'+255693338637',	1,	907226,	'5644f1a1ecfc5234b06baf2f55bdd85f06e896da',	1686945413,	NULL,	1,	NULL),
+(8,	'user',	'user@ifm.ac.tz',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'Mohamed',	'Issa',	'Singano',	NULL,	'0755199399',	2,	222398,	'92c56c4ad88c3880b1dc29ad56681fefea5fe27f',	1686944431,	NULL,	1,	NULL),
+(19,	'user2',	'user2@ifm.ac.tz',	'7c4a8d09ca3762af61e59520943dc26494f8941b',	'Baraka',	'Gan',	'Baraka',	NULL,	'0755199399',	2,	222398,	'92c56c4ad88c3880b1dc29ad56681fefea5fe27f',	1686944431,	NULL,	1,	NULL),
+(20,	'admin2',	'mohamed@pulsans.com',	'315f166c5aca63a157f7d41007675cb44a948b33',	'Mohamed',	'ISSA',	'Singano',	NULL,	'+255693338637',	2,	NULL,	NULL,	NULL,	'393a1bec7f37d9b2da3bed9fc8d5e042fa734fb0',	1,	NULL),
+(28,	'asd',	'mohSamed@pulsans.com',	'f10e2821bbbea527ea02200352313bc059445190',	'Ahmed',	'SI',	'Singano',	NULL,	'0656542197',	2,	NULL,	NULL,	NULL,	'f531834a66ef373d06b63858f16c6437664b60e1',	1,	'5555');
 
--- 2023-06-16 20:52:51
+-- 2023-06-18 07:20:25

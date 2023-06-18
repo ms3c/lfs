@@ -149,12 +149,12 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" name="email" class="form-control" id="lname" placeholder="Last Email"
+                            <input type="email" name="email" class="form-control" id="lname" placeholder="Email Address"
                                 required="required" data-validation-required-message="Please enter your email address" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="tel" name="phone" class="form-control" id="lname" placeholder="Phone Number"
+                            <input type="number" name="phone" class="form-control" id="lname" placeholder="Phone Number"
                                 required="required" data-validation-required-message="Please enter your phone number" />
                             <p class="help-block text-danger"></p>
                         </div>

@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['id'])){
+    header("Location: login.php?warning=youneedtologinfirst");
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
