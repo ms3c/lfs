@@ -35,6 +35,8 @@ try {
         $mail->Body = "Dear recipient,<br><br>Please click the link below to verify your account:<br><br><a href=https://lfs.ifm.tz/account/verify.php?token=$token>Verify Account</a><br><br>Thank you!";
     }else if($type == 2){ 
         $mail->Body = "Dear recipient,<br><br>The Item $token has been claimed!";
+    }else if($type == 3){
+        $mail->Body = "Dear recipient,<br><br>The Item $token has been found!";
     }
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();

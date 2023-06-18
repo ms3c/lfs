@@ -4,6 +4,7 @@ session_start();
 
 include "../helpers/dbcon.inc.php";
 include "../mailer.php";
+include "../sms.php";
 
 $itemid = mysqli_real_escape_string($conn, $_GET['itemid']);
 $user_id = $_SESSION['id'];
@@ -30,7 +31,14 @@ if ($checkres) {
                 $row = $result->fetch_assoc();
                 $email = $row['email'];
                 $item = $row['item_name'];
+                $phone = $row['phone'];
+                $claimer = $_SESSION['first_name'] .' '. $_SESSION['lastname'];
+
+            $msg = "The item $item has been claimed by $claimer Please check your account for more details.";
+
+            SMSHelper($msg , $phone);
             MailHelper($item, $email, 2);
+
             header("Location: ../myclaims.php?success=succesfullyclaimed&itemid=$itemid");
             exit();
         }

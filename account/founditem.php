@@ -4,6 +4,7 @@ session_start();
 
 include "../helpers/dbcon.inc.php";
 include "../mailer.php";
+include "../sms.php";
 
 $itemid = mysqli_real_escape_string($conn, $_GET['itemid']);
 $user_id = $_SESSION['id'];
@@ -36,11 +37,17 @@ if ($checkres) {
             WHERE items.item_id = $itemid";
 
             $result = $conn->query($sql);
+                $num = $row['phone'];
 
                 $row = $result->fetch_assoc();
                 $email = $row['email'];
                 $item = $row['item_name'];
-            MailHelper($item, $email, 2);
+                $founder = $_SESSION['first_name'] .' '. $_SESSION['lastname'];
+                $phone =  $_SESSION['phone'];
+
+            $msg = "Your item $item has been found by $founder call him $phone and Please check your account for more details.";
+            SMSHelper($msg , $num);
+            MailHelper($item, $email, 3);
             header("Location: ../mislayed.php?success=succesfullyclaimed&itemid=$itemid");
             exit();
         }
