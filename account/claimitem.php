@@ -33,8 +33,9 @@ if ($checkres) {
                 $item = $row['item_name'];
                 $phone = $row['phone'];
                 $claimer = $_SESSION['first_name'] .' '. $_SESSION['lastname'];
+                $claimerphone = $_SESSION['phone'];
 
-            $msg = "The item $item has been claimed by $claimer Please check your account for more details.";
+            $msg = "The item $item has been claimed by $claimer $claimerphone Please check your account for more details.";
 
             SMSHelper($msg , $phone);
             MailHelper($item, $email, 2);
