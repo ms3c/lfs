@@ -117,15 +117,13 @@ if(!isset($_SESSION['id'])){
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                             <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
                             <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
                             <a href="chat/login.php" class="nav-item nav-link">Chat </a>
                             <a href="profile.php" class="nav-item nav-link">Profile </a>
-
-                        </div>
 
                         </div>
                         
@@ -143,8 +141,8 @@ if(!isset($_SESSION['id'])){
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php">Home</a>
-                    <a class="breadcrumb-item text-dark" href="post.php">Post Item</a>
-                    <a class="breadcrumb-item text-dark" href="myaccount.php">My Account</a>
+                    <a class="breadcrumb-item text-dark" href="post.php">Account</a>
+                    <a class="breadcrumb-item text-dark" href="myaccount.php">Profile</a>
                 </nav>
             </div>
         </div>
@@ -157,104 +155,50 @@ if(!isset($_SESSION['id'])){
     <div class="container-fluid h-100">
         <div class="row px-xl-5 h-100">
             <div class="col-lg-8 mx-auto text-center align-self-center">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Post a Lost Item</span></h5>
-                <form action="helpers/handler.php" method="POST" enctype="multipart/form-data">
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Account Settings</span></h5>
+                <?php
+                        if(isset($_GET['success'])){
+
+                            if($_GET['success'] == 'updated'){
+                                echo '<p style="color:green">You Profile is Updated</p>';
+                            }else if($_GET['error'] == 'notupdated'){
+                                echo '<p style="color:red">You Profile is not Updated</p>';
+                            }
+
+                        }
+                        ?>
+                <form action="helpers/updateme.php" method="POST" enctype="multipart/form-data">
                     <div class="bg-light p-30 mb-5">
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label>Item Name</label>
-                                <input name="item" class="form-control" type="text" placeholder="">
+                                <label>First Name</label>
+                                <input name="name" class="form-control" type="text" value="<?php echo $_SESSION['first_name']; ?>" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label>Place of lost/found</label>
-                                <input name="place" class="form-control" type="text" placeholder="">
+                                <label>Middle Name</label>
+                                <input name="mname" class="form-control" type="text" value="<?php echo $_SESSION['middle_name']; ?>" placeholder="">
+                            </div>
+                           
+                            <div class="col-md-6 form-group">
+                                <label>Last Name</label>
+                                <input name="lname" class="form-control" type="text" value="<?php echo $_SESSION['lastname']; ?>" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
-                            <label>Near Location</label>
-                        <select class="form-control" name="nearby" id="subject" required="required" data-validation-required-message="Please select a subject">
-                            <option value="">Nearby</option>
-                            <?php 
-                 
-
-                                include 'helpers/dbcon.inc.php';
-                                $sql = "SELECT * FROM places";
-                                $result = $conn->query($sql);
-                                while($row = $result->fetch_assoc()){
-                                    echo '<option value="'.$row['place_name'].'">'.$row['place_name'].'</option>';
-                                }
-                                ?>
+                                <label>Email</label>
+                                <input name="email" class="form-control" type="email" value="<?php echo $_SESSION['email']; ?>" placeholder="">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Phone</label>
+                                <input name="phone" class="form-control" type="number" value="<?php echo $_SESSION['phone']; ?>" placeholder="">
+                            </div>
                          
-                        </select>
-                        
-                        
-                            </div>
-                            <div class="col-md-6 form-group">
-                            <label>Category</label>
-                        <select class="form-control" name="cotegory" id="subject" required="required" data-validation-required-message="Please select a subject">
-                            <option value="">Select a Category</option>
-
-                            <?php 
-                 
-
-                            include 'helpers/dbcon.inc.php';
-                            $sql = "SELECT * FROM categories";
-                            $result = $conn->query($sql);
-                            while($row = $result->fetch_assoc()){
-                                echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
-                            }
-                            ?>
-                       
-                        </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                            <label>Type</label>
-                        <select class="form-control" name="type" id="subject" required="required" data-validation-required-message="Please select a subject">
-                            <option value="">Select a Type</option>
-                            <option value="Lost">Lost</option>
-                            <option value="Found">Found</option>
-                         
-                        </select>
-                        
-                        
-                            </div>
-                            
-                            <div class="col-md-6 form-group">
-                                <label>Date</label>
-                                <input name="date" class="form-control" type="date" placeholder="">
-                            </div>
-                            
-                            <div class="col-md-6 form-group">
-                            <label>Image</label>
-                            <div class="custom-file">
-                                <input name="photo" class="custom-file-input" type="file" id="imageInput">
-                                <label class="custom-file-label" for="imageInput">Choose image</label>
-                            </div>
-                        </div>
-
                         </div>
                         
-                    </div>
-                    <div class="collapse mb-5" id="shipping-address">
-                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
-                        <div class="bg-light p-30">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <label>First Name</label>
-                                    <input class="form-control" type="text" placeholder="John">
-                                </div>
-                                <!-- Other form fields for shipping address -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <textarea class="form-control" name="description" rows="8" id="message" placeholder="Additional description about the item"
-                            data-validation-required-message="Please enter your item description"></textarea>
-                        <p class="help-block text-danger"></p>
                     </div>
 
 
                     <div>
-                        <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Post The Item</button>
+                        <button class="btn btn-primary py-2 px-4" name="submit" type="submit" id="sendMessageButton">Update My Account</button>
                     </div>
                 </form>
             </div>

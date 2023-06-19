@@ -26,6 +26,7 @@ if($row['verified'] == 1){
         $_SESSION['middle_name'] = $row['middle_name'];
         $_SESSION['lastname'] = $row['lastname'];
         $_SESSION['phone'] = $row['phone'];
+        $_SESSION['email'] = $row['email'];
         if($row['role'] == '1'){
             header("Location: ../admin/index.php");
             exit();

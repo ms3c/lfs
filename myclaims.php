@@ -123,6 +123,9 @@ if(!isset($_SESSION['id'])){
                             <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
                             <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
                             <a href="chat/login.php" class="nav-item nav-link">Chat </a>
+                            <a href="profile.php" class="nav-item nav-link">Profile </a>
+
+                        </div>
 
                         </div>
                         

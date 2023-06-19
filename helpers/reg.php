@@ -16,6 +16,7 @@ $phone = mysqli_real_escape_string($conn, $_POST['phone']);
 
 $username = $_POST['username'];
 $password = $_POST['password'];
+$chatpassword = "";
 $password1 = $_POST['passwordrepeat'];
 
 $checkquery = "SELECT COUNT(*) as count FROM users WHERE username = '$username' OR email = '$email'";
@@ -34,6 +35,7 @@ if ($checkres) {
 if ($password === $password1) {
 
     $hashedpwd = sha1($password);
+    $chatpassword = md5($password);
 
 } else {
 
@@ -47,7 +49,13 @@ $token = sha1(date("YmdHis") . (string) $code);
 $query = "INSERT INTO `users` (`username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`, `code`)
 VALUES ('$username', '$email', '$hashedpwd', '$fname', '$mname', '$lname', NULL, '$phone', '2', NULL, NULL, NULL, '$token', '$vcode');";
 
+$firstnamelastname = $fname . " " . $lname;
+$uniqueid = rand(time(), 100000000);
+$chatquery = "INSERT INTO `chatusers` (`unique_id`, `fname`, `lname`, `email`, `password`, `img`, `status`)
+VALUES ('$uniqueid','$firstnamelastname', '$lname', '$email', '$chatpassword', '1687083735default.jpg', 'Active now');";
+
 $result = $conn->query($query);
+$result2 = $conn->query($chatquery);
 
 if($result){
     include "../mailer.php";
