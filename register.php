@@ -92,7 +92,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="post.php" class="nav-item nav-link">Post an Item</a>
+                            <a href="post.php" class="nav-item nav-link">Register Account</a>
                         </div>
                         
                     </div>

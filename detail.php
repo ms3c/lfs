@@ -247,6 +247,7 @@ session_start();
                         $place =  $row['location_found'];
                         $phone = $row['phone'];
                         $type = $row['type'];
+                        $chatid = $row['chatid'];
                         $postedbyid = $row['postedby'];
                     
 
@@ -266,6 +267,8 @@ session_start();
                         if($postedbyid != $_SESSION['id']){
 
                             echo "<a href='account/claimitem.php?itemid=$id'><button class='btn btn-primary px-3'><i class='fa fa-hand-paper mr-1'></i>Claim This Item</button></a>";
+                            
+                            
                         }
                     }
 
@@ -296,7 +299,7 @@ session_start();
 
                         if($postedbyid != $_SESSION['id']){
 
-                            echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the Person who found this item</a>';
+                            echo '<a href="chat/chat.php?user_id='.$chatid.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Chat with the Person who found this item</a>';
 
                         }
                     }
@@ -307,7 +310,7 @@ session_start();
 
                         if($postedbyid != $_SESSION['id']){
 
-                            echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
+                            echo '<a href="chat/chat.php?user_id='.$chatid.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Chat with the person who lost this item</a>';
 
                         }
                     }

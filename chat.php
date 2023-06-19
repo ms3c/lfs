@@ -122,7 +122,7 @@ if(!isset($_SESSION['id'])){
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                             <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
                             <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
-                            <a href="chat.php" class="nav-item nav-link">Chat </a>
+                            <a href="chat/login.php" class="nav-item nav-link">Chat </a>
                             <a href="profile.php" class="nav-item nav-link">Profile </a>
 
                         </div>
@@ -158,12 +158,10 @@ if(!isset($_SESSION['id'])){
                 <table class="table table-light table-borderless table-hover text-center mb-0">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Image</th>
-                            <th>Item</th>
-                            <th>Place</th>
-                            <th>Status</th>
-                            <th>Confirm</th>
-                            <th>Claim</th>
+                            <th>Message Id</th>
+                            <th>Message</th>
+                            <th>Action</th>
+              
                         </tr>
                     </thead>
                     <tbody class="align-middle">
@@ -171,49 +169,31 @@ if(!isset($_SESSION['id'])){
                     include 'helpers/dbcon.inc.php';
 
                     $uid = $_SESSION['id'];
+                    $unique = $_SESSION['unique_id'];
                     
-                    $sql = "SELECT items.*, users.*
-                    FROM items
-                    INNER JOIN users ON items.postedby = users.id WHERE users.id = $uid AND type = 'Lost' ORDER BY item_id DESC";
-
-
+                    $sql = "SELECT * FROM messages WHERE incoming_msg_id = '$unique' ORDER BY msg_id DESC";
                     $result = $conn->query($sql);
 
-                        while($row = $result->fetch_assoc()){
-
-                            $item = $row['item_name'];
-                            $image = $row['image'];
-                            $id = $row['item_id'];
-
-                            $postedby = $row['first_name'] .' '. $row['lastname'];
-                            $date = $row['date_found'];
-                            $place =  $row['location_found'];
-                            $phone = $row['phone'];
-                            $type = $row['type'];
-                            $claimstatus = $row['status'];
-                            if ($claimstatus == 0){
-
-                                $icon = 'fa-exclamation-triangle';
-                                $color = 'warning';
-                                $disabled = '';
-
-                            }else if($claimstatus == 1){
-                                $icon = 'fa-check';
-                                $color = 'success';
-                                $disabled = 'disabled';
-
-                            }
+                    $uniqueOutgoingMsgIds = array(); // To keep track of unique outgoing_msg_id
+                    
+                    while ($row = $result->fetch_assoc()) {
+                        $msg = $row['msg'];
+                        $msgid = $row['msg_id'];
+                        $outgoing = $row['outgoing_msg_id'];
+                    
+                        // Check if the outgoing_msg_id has already been processed
+                        if (!in_array($outgoing, $uniqueOutgoingMsgIds)) {
+                            // Add the outgoing_msg_id to the unique array
+                            $uniqueOutgoingMsgIds[] = $outgoing;
+                    
                             echo "
                             <tr>
-                            <td class='align-middle'><img src='$image' alt='' style='width: 50px;'></td>
-                            <td class='align-middle'>$item</td>
-                            <td class='align-middle'>$place</td>
-                            <td class='align-middle'>$type</td>
-                            <td class='align-middle'><a href='account/confirmitem.php?itemid=$id'><button $disabled class='btn btn-sm btn-success'><i class='fa fa-check'></i></button></a></td>
-                            <td class='align-middle'><button class='btn btn-sm btn-$color'><i class='fa $icon'></i></button></td>
+                            <td class='align-middle'>$msgid</td>
+                            <td class='align-middle'>$msg</td>
+                            <td class='align-middle'><a href='chat/chat.php?user_id=$outgoing'<button class='btn btn-sm btn-success'><i class='fa fa-commenting'> View</i></button></td>
                             </tr>";
-
                         }
+                    }
                       
 
                     ?>
