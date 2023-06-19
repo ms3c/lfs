@@ -260,13 +260,16 @@ session_start();
                     
                     if($type == 'Found'){
 
-
+                    if(isset($_SESSION['id'])){
                         if($postedbyid != $_SESSION['id']){
 
-                            echo "<a href='account/claimitem.php?itemid=$id'><button class='btn btn-primary px-3'><i class='fa fa-hand-paper mr-1'></i>Claim This ItemS</button></a>";
+                            echo "<a href='account/claimitem.php?itemid=$id'><button class='btn btn-primary px-3'><i class='fa fa-hand-paper mr-1'></i>Claim This Item</button></a>";
                         }
+                    }
 
                     }else if($type == 'Lost'){
+
+                    if(isset($_SESSION['id'])){
 
                         if($postedbyid == $_SESSION['id']){
                             echo '<a href="account/founditem.php?itemid='.$id.'"><button class="btn btn-success px-3"><i class="fa fa-hand-paper mr-1"></i>I Found My Item</button></a>';
@@ -278,6 +281,7 @@ session_start();
                         }
 
                     }
+                    }
                     
                     
                     
@@ -286,22 +290,27 @@ session_start();
                     echo '<div class="d-flex align-items-center mb-4 pt-2">';
                     if($type == 'Found'){
 
+                    if(isset($_SESSION['id'])){
+
                         if($postedbyid != $_SESSION['id']){
 
                             echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the Person who found this item</a>';
 
                         }
+                    }
 
                     }else if($type == 'Lost'){
+
+                if(isset($_SESSION['id'])){
 
                         if($postedbyid != $_SESSION['id']){
 
                             echo '<a href="tel:'.$phone.'" class="btn btn-success px-3"><i class="fa fa-phone mr-1"></i>Call the person who lost this item</a>';
 
                         }
-
-
                     }
+
+                }
                     echo '</div>';
 
                     

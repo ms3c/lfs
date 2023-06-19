@@ -127,7 +127,7 @@
                             }
 
                         }else if(isset($_GET['error'])){
-                            if($_GET['error'] == 'loginerror'){
+                            if($_GET['error'] == 'loginerror' || $_GET['error'] == 'notverified'){
 
                                 echo '<p style="color:red">Login error please check your credentials or account verification</p>';
 
