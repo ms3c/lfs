@@ -155,7 +155,7 @@ session_start();
 
                     $email = strip_tags($_GET['email']);
 
-                            echo '<p style="color:green">Verificatio link was sent to your email '.$email.'  or enter code below</p>';
+                            echo '<p style="color:green">Verification link was sent to your email '.$email.'  or enter code below from your phone</p>';
                             
                     ?>
                     <form action="account/verify.php" method="POST" name="post-form" id="contactForm" novalidate="novalidate">

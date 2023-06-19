@@ -49,7 +49,7 @@ $token = sha1(date("YmdHis") . (string) $code);
 $query = "INSERT INTO `users` (`username`, `email`, `password`, `first_name`, `middle_name`, `lastname`, `student_id`, `phone`, `role`, `resetcode`, `resettoken`, `expireat`, `verifytoken`, `code`)
 VALUES ('$username', '$email', '$hashedpwd', '$fname', '$mname', '$lname', NULL, '$phone', '2', NULL, NULL, NULL, '$token', '$vcode');";
 
-$firstnamelastname = $fname . " " . $lname;
+$firstnamelastname = $fname . " " . $mname;
 $uniqueid = rand(time(), 100000000);
 $chatquery = "INSERT INTO `chatusers` (`unique_id`, `fname`, `lname`, `email`, `password`, `img`, `status`)
 VALUES ('$uniqueid','$firstnamelastname', '$lname', '$email', '$chatpassword', '1687083735default.jpg', 'Active now');";
