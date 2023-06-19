@@ -117,11 +117,12 @@ if(!isset($_SESSION['id'])){
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="post.php" class="nav-item nav-link">Post</a>
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                             <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
                             <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
+                            <a href="chat/login.php" class="nav-item nav-link">Chat </a>
 
                         </div>
                         
