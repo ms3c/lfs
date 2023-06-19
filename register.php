@@ -129,6 +129,12 @@
 
                             if($_GET['error'] == 'accountexists'){
                                 echo '<p style="color:red">Username or email is already used by someone</p>';
+                            }else if($_GET['error'] == 'emailnotvalid'){
+                                echo '<p style="color:red">Invalid Email</p>';
+
+                            }else if($_GET['error'] == 'importantfieldsnotfilled'){
+                                echo '<p style="color:red">Important Fields Not filled or Invalid Email</p>';
+
                             }
                         }
                      ?>

@@ -2,6 +2,8 @@
 session_start();
 
 include "dbcon.inc.php";
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 
 $fname = mysqli_real_escape_string($conn, $_POST['fname']);
@@ -12,10 +14,24 @@ $lname = mysqli_real_escape_string($conn, $_POST['lname']);
 
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 
+if(empty($_POST['fname']) && empty($_POST['lname']) && empty($_POST['password'])){
+
+    header("Location: ../register.php?error=importantfieldsnotfilled");
+    exit();
+
+}
+
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+} else {
+    header("Location: ../register.php?error=emailnotvalid");
+    exit();
+}
 $phone = mysqli_real_escape_string($conn, $_POST['phone']);
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+
+
+
+
 $chatpassword = "";
 $password1 = $_POST['passwordrepeat'];
 
