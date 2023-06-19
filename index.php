@@ -450,6 +450,17 @@ session_start();
 
             }
 
+            $specificDate = $row["date_found"];
+            $currentDate = date('Y-m-d');
+
+            // Check if one day has passed since the specific date
+            if (strtotime($currentDate) > strtotime($specificDate)) {
+                $doshow = '';
+                
+            } else {
+                $doshow = '<img src="img/new_flash.gif" width="44px" height="33px">';
+            }
+
             echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
@@ -461,7 +472,7 @@ session_start();
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">' . $row["item_name"] .'<img src="img/new_flash.gif" width="44px" height="33px"> </a>'.$badg.'<br>
+                        <a class="h6 text-decoration-none text-truncate" href="">' . $row["item_name"] ."$doshow". '</a>'.$badg.'<br>
                         <a class="h6 text-decoration-none text-truncate" href="">' . 'Place: '.$row["location_found"] .' </a>
 
                 

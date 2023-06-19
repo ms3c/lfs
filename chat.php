@@ -122,7 +122,7 @@ if(!isset($_SESSION['id'])){
                             <a href="myaccount.php" class="nav-item nav-link">My Account</a>
                             <a href="myclaims.php" class="nav-item nav-link">My Claims</a>
                             <a href="mislayed.php" class="nav-item nav-link">Mislayed Items </a>
-                            <a href="chat/login.php" class="nav-item nav-link">Chat </a>
+                            <a href="chat.php" class="nav-item nav-link">Chat </a>
                             <a href="profile.php" class="nav-item nav-link">Profile </a>
 
                         </div>
@@ -143,7 +143,7 @@ if(!isset($_SESSION['id'])){
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <span class="breadcrumb-item active">My Account</span>
+                    <span class="breadcrumb-item active">My Chat</span>
                 </nav>
             </div>
         </div>
