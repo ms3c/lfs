@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION['role'])){
-    header("Location: ../login.php");
-    if($_SESSION['role'] != '1'){
-        header("Location: ../login.php");
-    }
+
+if(!isset($_SESSION['id'])){
+
+    header("Location: ../login.php?warning=youneedtologinfirst");
+    exit();
 }
 
+if($_SESSION['role'] != '1'){
+    header("Location: ../index.php");
+    exit();
+}
+  
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
