@@ -107,6 +107,22 @@ if($_SESSION['role'] != '1'){
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
                     </li>
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                        <a href="addplace.php"
+                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-table float-left mx-2"></i>
+                            Add Place
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
+                    <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                        <a href="addcat.php"
+                           class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+                            <i class="fas fa-table float-left mx-2"></i>
+                            Add Category
+                            <span><i class="fa fa-angle-right float-right"></i></span>
+                        </a>
+                    </li>
                     
                         </ul>
                     </li>
