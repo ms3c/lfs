@@ -16,6 +16,6 @@
         "webpack": "^3.8.1"
     },
     "dependencies": {
-        "tailwindcss-tables": "^0.2.0"
+        "tailwindcss-tables": "^0.4.0"
     }
 }
